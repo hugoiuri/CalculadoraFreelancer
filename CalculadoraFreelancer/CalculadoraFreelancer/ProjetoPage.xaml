@@ -8,25 +8,25 @@
         <StackLayout>
             <Label Text="Nome do Projeto" />
             <Entry Placeholder="Nome do projeto"
-                   x:Name="Nome" />
+                   Text="{Binding Nome}" />
 
             <Label Text="Valor por hora" />
             <Entry Placeholder="Valor por hora"
                    Keyboard="Numeric"
-                    x:Name="ValorPorHora" />
+                    Text="{Binding ValorPorHora}" />
 
             <Label Text="Horas por dia" />
             <Entry Placeholder="Horas por dia"
                    Keyboard="Numeric"
-                    x:Name="HorasPorDia" />
+                    Text="{Binding HorasPorDia}" />
 
             <Label Text="Dias de duração do projeto" />
             <Entry Placeholder="Dias de duração do projeto"
                    Keyboard="Numeric"
-                    x:Name="DiasDuracaoProjeto" />
+                    Text="{Binding DiasDuracaoProjeto}" />
 
             <Label FontSize="Large"
-                    x:Name="ValorTotal" />
+                    Text="{Binding ValorTotal, StringFormat='{0:C} / hora'}" />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -35,14 +35,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="0"
-                        BackgroundColor="#cdcdcd"
-                        Text="Limpar"
-                        x:Name="LimparButton"/>
+                            BackgroundColor="#cdcdcd"
+                            Text="Limpar"
+                            Command="{Binding LimparCommand}"/>
                 <Button Grid.Column="1"
-                    Text="Gravar"
-                    TextColor="White"
-                    BackgroundColor="#6699ff"
-                    x:Name="GravarButton"/>
+                            Text="Gravar"
+                            TextColor="White"
+                            BackgroundColor="#6699ff"
+                            Command="{Binding GravarCommand}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

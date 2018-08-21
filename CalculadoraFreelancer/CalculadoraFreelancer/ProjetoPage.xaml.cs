@@ -1,5 +1,6 @@
 ﻿using CalculadoraFreelancer.Models;
 using CalculadoraFreelancer.Repository;
+using CalculadoraFreelancer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,45 +13,14 @@ using Xamarin.Forms.Xaml;
 namespace CalculadoraFreelancer
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProjetoPage : ContentPage
-	{
-		public ProjetoPage ()
-		{
-			InitializeComponent ();
-            GravarButton.Clicked += GravarButton_Clicked;
-            LimparButton.Clicked += LimparButton_Clicked;
-        }
-
-        private void GravarButton_Clicked(object sender, EventArgs e)
+    public partial class ProjetoPage : ContentPage
+    {
+        public ProjetoPage()
         {
-            var valorTotal = double.Parse(ValorPorHora.Text) * int.Parse(HorasPorDia.Text) * int.Parse(DiasDuracaoProjeto.Text);
-            ValorTotal.Text = $"{valorTotal.ToString("C")} / hora";
-            Gravar(valorTotal);
+            InitializeComponent();
+            var viewModel = new ProjetoPageViewModel();
+            BindingContext = viewModel;
         }
 
-        private void LimparButton_Clicked(object sender, EventArgs e)
-        {
-            Nome.Text = string.Empty;
-            ValorPorHora.Text = string.Empty;
-            HorasPorDia.Text = string.Empty;
-            DiasDuracaoProjeto.Text = string.Empty;
-            ValorTotal.Text = string.Empty;
-        }
-
-        private async void Gravar(double valorTotal)
-        {
-            var projetoAzureClient = new AzureProjetoRepository();
-
-            projetoAzureClient.Insert(new Models.Projeto()
-            {
-                Nome = Nome.Text,
-                ValorPorHora = double.Parse(ValorPorHora.Text),
-                HorasPorDia = int.Parse(HorasPorDia.Text),
-                DiasDuracaoProjeto = int.Parse(DiasDuracaoProjeto.Text),
-                ValorTotal = valorTotal
-            });
-
-            await App.Current.MainPage.DisplayAlert("Sucesso", "Projeto gravado!", "Ok");
-        }
     }
 }
