@@ -1,9 +1,7 @@
-﻿using CalculadoraFreelancer.Models;
-using CalculadoraFreelancer.Repository;
+﻿using CalculadoraFreelancer.Domain.Profissionais;
+using CalculadoraFreelancer.Services;
 using CalculadoraFreelancer.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using CalculadoraFreelancer.Views;
 using Xamarin.Forms;
 
 namespace CalculadoraFreelancer.ViewModels
@@ -73,10 +71,14 @@ namespace CalculadoraFreelancer.ViewModels
 
         public Command GravarCommand { get; }
 
+        private readonly ProfissionalService ProfissionalService;
+
         public CalculoValorHoraPageViewModel()
         {
             GravarCommand = new Command(ExecuteGravarCommand);
             Profissional = new Profissional();
+            ProfissionalService = new ProfissionalService();
+
         }
 
         private void CalcularValorHora()
@@ -104,10 +106,11 @@ namespace CalculadoraFreelancer.ViewModels
             Profissional.DiasFeriasPorAno = DiasFeriasPorAno;
             Profissional.ValorPorHora = ValorDaHora;
 
-            var profissionalAzureClient = new AzureRepository();
-            profissionalAzureClient.Insert(Profissional);
+            ProfissionalService.Inserir(Profissional);
 
-            await App.Current.MainPage.DisplayAlert("Sucesso", "Valor por hora gravado!", "Ok");
+            //await App.Current.MainPage.DisplayAlert("Sucesso", "Valor por hora gravado!", "Ok");
+            await App.Current.MainPage.Navigation.PushAsync(new CalculoValorHoraSucessoPage());
+
         }
     }
 }

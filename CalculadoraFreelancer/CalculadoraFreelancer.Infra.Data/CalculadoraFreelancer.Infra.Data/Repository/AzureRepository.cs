@@ -1,11 +1,10 @@
-﻿using CalculadoraFreelancer.Models;
+﻿using CalculadoraFreelancer.Domain.Profissionais;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CalculadoraFreelancer.Repository
+namespace CalculadoraFreelancer.Infra.Data.Repository
 {
     public class AzureRepository
     {

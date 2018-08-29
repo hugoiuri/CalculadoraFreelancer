@@ -1,15 +1,8 @@
-﻿using CalculadoraFreelancer.Repository;
-using CalculadoraFreelancer.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using CalculadoraFreelancer.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CalculadoraFreelancer
+namespace CalculadoraFreelancer.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalculoValorHoraPage : ContentPage

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Mobile.Client" Version="4.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CalculadoraFreelancer.Domain.Core\CalculadoraFreelancer.Domain.Core\CalculadoraFreelancer.Domain.Core.csproj" />
+  </ItemGroup>
+
+</Project>

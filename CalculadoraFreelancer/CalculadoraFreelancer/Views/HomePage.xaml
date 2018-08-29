@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:CalculadoraFreelancer"
+             xmlns:local="clr-namespace:CalculadoraFreelancer.Views"
              Title="Calculadora Freelancer"
-             x:Class="CalculadoraFreelancer.HomePage">
+             x:Class="CalculadoraFreelancer.Views.HomePage">
     <!--Pages can be added as references or inline-->
     <local:CalculoValorHoraPage/>
     <local:ProjetoPage/>

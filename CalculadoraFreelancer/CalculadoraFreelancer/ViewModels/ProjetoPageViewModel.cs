@@ -1,8 +1,6 @@
-﻿using CalculadoraFreelancer.Repository;
+﻿using CalculadoraFreelancer.Domain.Projeto;
+using CalculadoraFreelancer.Services;
 using CalculadoraFreelancer.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace CalculadoraFreelancer.ViewModels
@@ -59,10 +57,13 @@ namespace CalculadoraFreelancer.ViewModels
         public Command GravarCommand { get; }
         public Command LimparCommand { get; }
 
+        private readonly ProjetoService ProjetoService;
+
         public ProjetoPageViewModel()
         {
             GravarCommand = new Command(ExecuteGravarCommand);
             LimparCommand = new Command(ExecuteLimparCommand);
+            ProjetoService = new ProjetoService();
         }
 
         private void ExecuteLimparCommand()
@@ -74,9 +75,7 @@ namespace CalculadoraFreelancer.ViewModels
 
         private async void ExecuteGravarCommand()
         {
-            var projetoAzureClient = new AzureProjetoRepository();
-
-            projetoAzureClient.Insert(new Models.Projeto()
+            ProjetoService.Inserir(new Projeto()
             {
                 ValorPorHora = ValorPorHora,
                 HorasPorDia = HorasPorDia,

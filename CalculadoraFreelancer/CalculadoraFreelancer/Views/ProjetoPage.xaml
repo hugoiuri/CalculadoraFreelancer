@@ -3,7 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Projeto"
              Padding="10"
-             x:Class="CalculadoraFreelancer.ProjetoPage">
+             x:Class="CalculadoraFreelancer.Views.ProjetoPage"
+             xmlns:converters="clr-namespace:CalculadoraFreelancer.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MoedaConverter x:Key="MoedaConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Nome do Projeto" />
@@ -13,7 +20,7 @@
             <Label Text="Valor por hora" />
             <Entry Placeholder="Valor por hora"
                    Keyboard="Numeric"
-                    Text="{Binding ValorPorHora}" />
+                   Text="{Binding ValorPorHora, Converter={StaticResource MoedaConverter}}"/>
 
             <Label Text="Horas por dia" />
             <Entry Placeholder="Horas por dia"
@@ -23,7 +30,7 @@
             <Label Text="Dias de duração do projeto" />
             <Entry Placeholder="Dias de duração do projeto"
                    Keyboard="Numeric"
-                    Text="{Binding DiasDuracaoProjeto}" />
+                   Text="{Binding DiasDuracaoProjeto}"/>
 
             <Label FontSize="Large"
                     Text="{Binding ValorTotal, StringFormat='{0:C} / projeto'}" />

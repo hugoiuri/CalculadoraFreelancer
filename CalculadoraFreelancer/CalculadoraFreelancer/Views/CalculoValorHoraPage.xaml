@@ -1,13 +1,21 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="CalculadoraFreelancer.CalculoValorHoraPage"
+            x:Class="CalculadoraFreelancer.Views.CalculoValorHoraPage"
+            xmlns:converters="clr-namespace:CalculadoraFreelancer.Converters"
             Title="Valor da Hora"
             Padding="10">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MoedaConverter x:Key="MoedaConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Valor ganho por mês" />
             <Entry Placeholder="Valor ganho por mês"
-                   Text="{Binding ValorGanhoMes}"
+                   Text="{Binding ValorGanhoMes, Converter={StaticResource MoedaConverter}}"
                    Keyboard="Numeric"/>
 
             <Label Text="Horas trabalhadas por dia" />
