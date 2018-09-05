@@ -1,9 +1,9 @@
 ﻿using CalculadoraFreelancer.Domain.Core.Models;
-using Microsoft.WindowsAzure.MobileServices;
+using SQLite;
 
 namespace CalculadoraFreelancer.Domain.Profissionais
 {
-    [DataTable("Profissional")]
+    [Table("Profissional")]
     public class Profissional: Entity
     {
         public double ValorGanhoMes { get; set; }

@@ -1,15 +1,16 @@
-﻿using CalculadoraFreelancer.Domain.Projeto;
-using CalculadoraFreelancer.Infra.Data.Repository;
+﻿using CalculadoraFreelancer.Domain.Interfaces;
+using CalculadoraFreelancer.Domain.Projetos;
+using CalculadoraFreelancer.Services.Interfaces;
 
 namespace CalculadoraFreelancer.Services
 {
-    public class ProjetoService
+    public class ProjetoService : IProjetoService
     {
-        private readonly AzureProjetoRepository ProjetoRepository;
+        private readonly IProjetoRepository ProjetoRepository;
 
-        public ProjetoService()
+        public ProjetoService(IProjetoRepository projetoRepository)
         {
-            ProjetoRepository = new AzureProjetoRepository();
+            ProjetoRepository = projetoRepository;
         }
 
         public void Inserir(Projeto projeto)

@@ -1,4 +1,11 @@
-﻿using CalculadoraFreelancer.Views;
+﻿using CalculadoraFreelancer.Domain.Interfaces;
+using CalculadoraFreelancer.Infra.Data.Repository;
+using CalculadoraFreelancer.Services;
+using CalculadoraFreelancer.Services.Interfaces;
+using CalculadoraFreelancer.Views;
+using CommonServiceLocator;
+using Unity;
+using Unity.ServiceLocation;
 using Xamarin.Forms;
 
 namespace CalculadoraFreelancer
@@ -8,6 +15,16 @@ namespace CalculadoraFreelancer
 		public App ()
 		{
 			InitializeComponent();
+
+            var unityContainer = new UnityContainer();
+
+            unityContainer.RegisterType<IProjetoRepository, ProjetoRepository>();
+            unityContainer.RegisterType<IProfissionalRepository, ProfissionalRepository>();
+
+            unityContainer.RegisterType<IProjetoService, ProjetoService>();
+            unityContainer.RegisterType<IProfissionalService, ProfissionalService>();
+
+            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(unityContainer));
 
             MainPage = new NavigationPage(new HomePage());  
         }

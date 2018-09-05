@@ -1,5 +1,5 @@
-﻿using CalculadoraFreelancer.Domain.Projeto;
-using CalculadoraFreelancer.Services;
+﻿using CalculadoraFreelancer.Domain.Projetos;
+using CalculadoraFreelancer.Services.Interfaces;
 using CalculadoraFreelancer.ViewModels.Base;
 using Xamarin.Forms;
 
@@ -57,13 +57,13 @@ namespace CalculadoraFreelancer.ViewModels
         public Command GravarCommand { get; }
         public Command LimparCommand { get; }
 
-        private readonly ProjetoService ProjetoService;
+        private readonly IProjetoService ProjetoService;
 
-        public ProjetoPageViewModel()
+        public ProjetoPageViewModel(IProjetoService projetoService)
         {
             GravarCommand = new Command(ExecuteGravarCommand);
             LimparCommand = new Command(ExecuteLimparCommand);
-            ProjetoService = new ProjetoService();
+            ProjetoService = projetoService;
         }
 
         private void ExecuteLimparCommand()

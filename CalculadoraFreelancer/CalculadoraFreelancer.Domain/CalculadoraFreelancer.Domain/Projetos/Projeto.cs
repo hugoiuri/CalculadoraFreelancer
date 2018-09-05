@@ -1,9 +1,9 @@
 ﻿using CalculadoraFreelancer.Domain.Core.Models;
-using Microsoft.WindowsAzure.MobileServices;
+using SQLite;
 
-namespace CalculadoraFreelancer.Domain.Projeto
+namespace CalculadoraFreelancer.Domain.Projetos
 {
-    [DataTable("Projeto")]
+    [Table("Projeto")]
     public class Projeto : Entity
     {
         public string Nome { get; set; }

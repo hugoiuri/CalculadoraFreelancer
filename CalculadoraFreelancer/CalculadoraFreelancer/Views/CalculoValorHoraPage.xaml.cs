@@ -1,4 +1,5 @@
 ﻿using CalculadoraFreelancer.ViewModels;
+using CommonServiceLocator;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace CalculadoraFreelancer.Views
         public CalculoValorHoraPage()
         {
             InitializeComponent();
-            var viewModel = new CalculoValorHoraPageViewModel();
+            var viewModel = ServiceLocator.Current.GetInstance<CalculoValorHoraPageViewModel>();
             BindingContext = viewModel;
         }
     }

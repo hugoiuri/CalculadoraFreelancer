@@ -1,5 +1,6 @@
 ﻿using CalculadoraFreelancer.Domain.Profissionais;
 using CalculadoraFreelancer.Services;
+using CalculadoraFreelancer.Services.Interfaces;
 using CalculadoraFreelancer.ViewModels.Base;
 using CalculadoraFreelancer.Views;
 using Xamarin.Forms;
@@ -71,13 +72,13 @@ namespace CalculadoraFreelancer.ViewModels
 
         public Command GravarCommand { get; }
 
-        private readonly ProfissionalService ProfissionalService;
+        private readonly IProfissionalService ProfissionalService;
 
-        public CalculoValorHoraPageViewModel()
+        public CalculoValorHoraPageViewModel(IProfissionalService profissionalService)
         {
             GravarCommand = new Command(ExecuteGravarCommand);
             Profissional = new Profissional();
-            ProfissionalService = new ProfissionalService();
+            ProfissionalService = profissionalService;
 
         }
 
