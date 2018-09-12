@@ -77,6 +77,7 @@ namespace CalculadoraFreelancer.ViewModels
         {
             ProjetoService.Inserir(new Projeto()
             {
+                Nome = Nome,
                 ValorPorHora = ValorPorHora,
                 HorasPorDia = HorasPorDia,
                 DiasDuracaoProjeto = DiasDuracaoProjeto,

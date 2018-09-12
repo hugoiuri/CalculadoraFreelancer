@@ -7,4 +7,5 @@
     <!--Pages can be added as references or inline-->
     <local:CalculoValorHoraPage/>
     <local:ProjetoPage/>
+    <local:ProjetosPage/>
 </TabbedPage>
